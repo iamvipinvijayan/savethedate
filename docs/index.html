@@ -48,18 +48,54 @@
         animation: floatUp 0.9s ease-out both;
       }
 
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.75s ease-out,
+          transform 0.75s ease-out;
+        will-change: opacity, transform;
+      }
+
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-reveal.delay-1 {
+        transition-delay: 0.08s;
+      }
+
+      .scroll-reveal.delay-2 {
+        transition-delay: 0.16s;
+      }
+
+      .scroll-reveal.delay-3 {
+        transition-delay: 0.24s;
+      }
+
+      .scroll-reveal.delay-4 {
+        transition-delay: 0.32s;
+      }
+
+      .scroll-reveal.delay-5 {
+        transition-delay: 0.4s;
+      }
+
       .couple-photo {
-        margin-bottom: 28px;
+        margin-bottom: 18px;
+        transform: translateY(-10px);
       }
 
       .couple-photo img {
-        width: clamp(180px, 55vw, 320px);
-        height: clamp(180px, 55vw, 320px);
+        width: clamp(200px, 58vw, 340px);
+        height: clamp(200px, 58vw, 340px);
         object-fit: cover;
         object-position: top center;
         border-radius: 50%;
         border: 5px solid #c9a227;
         box-shadow: 0 8px 30px rgba(139, 94, 60, 0.25);
+        transform-origin: center center;
         animation: pulse 4s ease-in-out infinite alternate;
       }
 
@@ -143,7 +179,7 @@
       }
 
       .count-box span:not(.count-number) {
-        font-size: clamp(0.78rem, 2.1vw, 0.92rem);
+        font-size: clamp(0.5rem, 1.3vw, 0.64rem);
         text-transform: uppercase;
         letter-spacing: 0.08em;
       }
@@ -165,10 +201,10 @@
 
       @keyframes pulse {
         from {
-          transform: scale(1);
+          transform: scale(1.04);
         }
         to {
-          transform: scale(1.02);
+          transform: scale(1.08);
         }
       }
 
@@ -306,25 +342,25 @@
   <body>
     <section class="hero">
       <div class="card">
-        <div class="couple-photo">
+        <div class="couple-photo scroll-reveal delay-1">
           <img src="src/img/img.png" alt="Vipin & Neenu" />
         </div>
 
-        <div class="save-date">Save The Date</div>
+        <div class="save-date scroll-reveal delay-2">Save The Date</div>
 
-        <h1>Vipin Vijayan</h1>
-        <div class="and">&</div>
-        <h1>Neenu Sadanandan</h1>
+        <h1 class="scroll-reveal delay-3">Vipin Vijayan</h1>
+        <div class="and scroll-reveal delay-3">&</div>
+        <h1 class="scroll-reveal delay-3">Neenu Sadanandan</h1>
 
-        <p class="subtitle">
+        <p class="subtitle scroll-reveal delay-4">
           request the pleasure of your company at their Reception
         </p>
 
-        <div class="date">6 July 2026</div>
+        <div class="date scroll-reveal delay-4">6 July 2026</div>
 
-        <div class="time">5:00 PM – 9:00 PM</div>
+        <div class="time scroll-reveal delay-4">5:00 PM – 9:00 PM</div>
 
-        <div class="venue">
+        <div class="venue scroll-reveal delay-5">
           <h2>Venue</h2>
           <p>
             Alba Arcade Auditorium<br />
@@ -332,7 +368,7 @@
           </p>
         </div>
 
-        <div class="countdown">
+        <div class="countdown scroll-reveal delay-5">
           <div class="count-box">
             <span class="count-number" id="days">0</span>
             <span>Days</span>
@@ -354,7 +390,7 @@
           </div>
         </div>
 
-        <div class="map-section">
+        <div class="map-section scroll-reveal delay-5">
           <h2 style="margin-bottom: 20px; color: #8b5e3c">How to Reach</h2>
 
           <iframe
@@ -370,7 +406,7 @@
             Open in Google Maps
           </a>
 
-          <div class="transport-grid">
+          <div class="transport-grid scroll-reveal delay-6">
             <div class="transport-card">
               <span class="t-icon">🚗</span>
               <h3>By Car</h3>
@@ -419,21 +455,23 @@
             </div>
           </div>
 
-          <div class="landmark-note">
+          <div class="landmark-note scroll-reveal delay-6">
             📍 <strong>Landmark:</strong> Alba Arcade Auditorium, Parambil
             Bazar, Calicut — near the Parambil Bazar junction. Look for the Alba
             Arcade building.
           </div>
         </div>
 
-        <div class="no-gifts">
+        <div class="no-gifts scroll-reveal delay-6">
           <strong>🎁 No Gifts, Please</strong>
           Your presence is the greatest gift of all. We kindly request that you
           do not bring any gifts. Just come, celebrate with us, and make this
           evening special with your love and blessings.
         </div>
 
-        <div class="footer">We look forward to celebrating with you ❤️</div>
+        <div class="footer scroll-reveal delay-6">
+          We look forward to celebrating with you ❤️
+        </div>
       </div>
     </section>
 
@@ -465,6 +503,22 @@
           (distance % (1000 * 60)) / 1000,
         );
       }, 1000);
+
+      const revealElements = document.querySelectorAll(".scroll-reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      revealElements.forEach((element) => revealObserver.observe(element));
     </script>
   </body>
 </html>
