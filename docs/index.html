@@ -287,13 +287,55 @@
         line-height: 1.6;
       }
 
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        padding: 16px 0;
+        border-bottom: 2px solid #e8d4b8;
+        margin-bottom: 20px;
+      }
+
+      .accordion-header h2 {
+        color: #8b5e3c;
+        margin: 0;
+        flex: 1;
+      }
+
+      .accordion-toggle {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+        color: #8b5e3c;
+      }
+
+      .accordion-toggle.open {
+        transform: rotate(180deg);
+      }
+
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.4s ease;
+        opacity: 0;
+      }
+
+      .accordion-content.open {
+        max-height: 1200px;
+        opacity: 1;
+      }
+
       .landmark-note {
         margin-top: 20px;
         font-size: clamp(0.8rem, 2.5vw, 0.9rem);
         color: #7a5c2e;
         background: #fff8f0;
-        border-radius: 10px;
-        padding: 12px 18px;
+        border: 1.5px dashed #c9a227;
+        border-radius: 14px;
+        padding: 18px 20px;
         line-height: 1.6;
         text-align: left;
       }
@@ -390,78 +432,6 @@
           </div>
         </div>
 
-        <div class="map-section scroll-reveal delay-5">
-          <h2 style="margin-bottom: 20px; color: #8b5e3c">How to Reach</h2>
-
-          <iframe
-            src="https://maps.google.com/maps?q=Alba%20Arcade%20Auditorium%20Parambil%20Bazar%20Calicut&t=&z=15&ie=UTF8&iwloc=&output=embed"
-          >
-          </iframe>
-
-          <a
-            class="btn"
-            href="https://www.google.com/maps/search/?api=1&query=Alba+Arcade+Auditorium+Parambil+Bazar+Calicut"
-            target="_blank"
-          >
-            Open in Google Maps
-          </a>
-
-          <div class="transport-grid scroll-reveal delay-6">
-            <div class="transport-card">
-              <span class="t-icon">🚗</span>
-              <h3>By Car</h3>
-              <p>
-                Head to Parambil Bazar, Calicut. Alba Arcade Auditorium is right
-                in the heart of the bazar area.
-                <strong>Parking is available at the venue.</strong>
-              </p>
-            </div>
-            <div class="transport-card">
-              <span class="t-icon">🚆</span>
-              <h3>From Railway Station</h3>
-              <p>
-                Kozhikode Railway Station is approximately
-                <strong>7 km</strong> from the venue.
-              </p>
-              <p style="margin-top: 6px">
-                🛺 <strong>Auto:</strong> Autos are available right outside the
-                station. Ask for <em>Alba Arcade, Parambil Bazar</em>.<br />
-                🚌 <strong>Private Bus:</strong> Board any bus headed towards
-                Parambil Bazar from the station road and alight at Parambil
-                Bazar stop.
-              </p>
-            </div>
-            <div class="transport-card">
-              <span class="t-icon">🚌</span>
-              <h3>From KSRTC Bus Stand</h3>
-              <p>KSRTC Stand is on Mavoor Road, Kozhikode.</p>
-              <p style="margin-top: 6px">
-                🛺 <strong>Auto:</strong> Autos are available outside the stand.
-                Ask for <em>Alba Arcade, Parambil Bazar</em>.<br />
-                🚌 <strong>Private Bus:</strong> Board a private bus from Mavoor
-                Road towards Parambil Bazar and alight at Parambil Bazar stop.
-              </p>
-            </div>
-            <div class="transport-card">
-              <span class="t-icon">🏢</span>
-              <h3>From Private Bus Stand</h3>
-              <p>From Palayam or Mofussil Bus Stand, Kozhikode.</p>
-              <p style="margin-top: 6px">
-                🛺 <strong>Auto:</strong> Autos are readily available. Ask for
-                <em>Alba Arcade, Parambil Bazar</em>.<br />
-                🚌 <strong>Private Bus:</strong> Board any bus passing through
-                Parambil Bazar and alight at Parambil Bazar stop.
-              </p>
-            </div>
-          </div>
-
-          <div class="landmark-note scroll-reveal delay-6">
-            📍 <strong>Landmark:</strong> Alba Arcade Auditorium, Parambil
-            Bazar, Calicut — near the Parambil Bazar junction. Look for the Alba
-            Arcade building.
-          </div>
-        </div>
-
         <div class="no-gifts scroll-reveal delay-6">
           <strong>🎁 No Gifts, Please</strong>
           Your presence is the greatest gift of all. We kindly request that you
@@ -471,6 +441,94 @@
 
         <div class="footer scroll-reveal delay-6">
           We look forward to celebrating with you ❤️
+        </div>
+
+        <div
+          class="landmark-note scroll-reveal delay-6"
+          style="margin-top: 40px"
+        >
+          📍 <strong>Landmark:</strong> Alba Arcade Auditorium, Parambil Bazar,
+          Calicut — near the Parambil Bazar junction. Look for the Alba Arcade
+          building.
+        </div>
+
+        <div class="map-section scroll-reveal delay-5" style="margin-top: 40px">
+          <div class="accordion-header" id="accordionToggle">
+            <h2>How to Reach</h2>
+            <span class="accordion-toggle" id="toggleIcon">▼</span>
+          </div>
+
+          <div class="accordion-content" id="accordionContent">
+            <iframe
+              src="https://maps.google.com/maps?q=Alba%20Arcade%20Auditorium%20Parambil%20Bazar%20Calicut&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            >
+            </iframe>
+
+            <a
+              class="btn"
+              href="https://www.google.com/maps/search/?api=1&query=Alba+Arcade+Auditorium+Parambil+Bazar+Calicut"
+              target="_blank"
+            >
+              Open in Google Maps
+            </a>
+
+            <div class="transport-grid scroll-reveal delay-6">
+              <div class="transport-card">
+                <span class="t-icon">🚗</span>
+                <h3>By Car</h3>
+                <p>
+                  Head to Parambil Bazar, Calicut. Alba Arcade Auditorium is
+                  right in the heart of the bazar area.
+                  <strong>Parking is available at the venue.</strong>
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🚆</span>
+                <h3>From Railway Station</h3>
+                <p>
+                  Kozhikode Railway Station is approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are available right outside
+                  the station. Ask for
+                  <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board any bus headed towards
+                  Parambil Bazar from the station road and alight at Parambil
+                  Bazar stop.
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🚌</span>
+                <h3>From KSRTC Bus Stand</h3>
+                <p>
+                  KSRTC Stand is on Mavoor Road, Kozhikode - approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are available outside the
+                  stand. Ask for <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board a private bus from
+                  Mavoor Road towards Parambil Bazar and alight at Parambil
+                  Bazar stop.
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🏢</span>
+                <h3>From Private Bus Stand</h3>
+                <p>
+                  From Palayam or Mofussil Bus Stand, Kozhikode - approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are readily available. Ask for
+                  <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board any bus passing through
+                  Parambil Bazar and alight at Parambil Bazar stop.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -519,6 +577,15 @@
       );
 
       revealElements.forEach((element) => revealObserver.observe(element));
+
+      const accordionToggle = document.getElementById("accordionToggle");
+      const accordionContent = document.getElementById("accordionContent");
+      const toggleIcon = document.getElementById("toggleIcon");
+
+      accordionToggle.addEventListener("click", () => {
+        accordionContent.classList.toggle("open");
+        toggleIcon.classList.toggle("open");
+      });
     </script>
   </body>
 </html>
