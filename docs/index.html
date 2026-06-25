@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reception Invitation | Vipin & Neenu</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        min-height: 100%;
+        background: linear-gradient(135deg, #fff7f0, #fef3e8);
+      }
+
+      body {
+        min-height: 100%;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #fff7f0, #fef3e8);
+        color: #333;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding: clamp(20px, 5vw, 40px) clamp(12px, 4vw, 20px);
+      }
+
+      .card {
+        max-width: 900px;
+        width: 100%;
+        background: white;
+        border-radius: 24px;
+        padding: clamp(28px, 6vw, 50px) clamp(16px, 5vw, 30px);
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        animation: floatUp 0.9s ease-out both;
+      }
+
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.75s ease-out,
+          transform 0.75s ease-out;
+        will-change: opacity, transform;
+      }
+
+      .scroll-reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-reveal.delay-1 {
+        transition-delay: 0.08s;
+      }
+
+      .scroll-reveal.delay-2 {
+        transition-delay: 0.16s;
+      }
+
+      .scroll-reveal.delay-3 {
+        transition-delay: 0.24s;
+      }
+
+      .scroll-reveal.delay-4 {
+        transition-delay: 0.32s;
+      }
+
+      .scroll-reveal.delay-5 {
+        transition-delay: 0.4s;
+      }
+
+      .couple-photo {
+        margin-bottom: 18px;
+        transform: translateY(-10px);
+      }
+
+      .couple-photo img {
+        width: clamp(220px, 62vw, 380px);
+        height: clamp(220px, 62vw, 380px);
+        object-fit: cover;
+        object-position: center center;
+        border-radius: 50%;
+        border: 5px solid #c9a227;
+        box-shadow: 0 8px 30px rgba(139, 94, 60, 0.25);
+        transform-origin: center center;
+        animation: pulse 4s ease-in-out infinite alternate;
+      }
+
+      .save-date {
+        letter-spacing: clamp(2px, 1vw, 5px);
+        text-transform: uppercase;
+        color: #b8860b;
+        font-size: clamp(11px, 2.5vw, 14px);
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 8vw, 4rem);
+        color: #8b5e3c;
+        line-height: 1.15;
+      }
+
+      .and {
+        font-size: clamp(1.3rem, 4vw, 2rem);
+        margin: 10px 0;
+        color: #c9a227;
+      }
+
+      .subtitle {
+        margin-top: 16px;
+        font-size: clamp(0.9rem, 3vw, 1.2rem);
+        line-height: 1.5;
+      }
+
+      .date {
+        margin-top: 24px;
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.4rem, 5vw, 2.2rem);
+        color: #8b5e3c;
+      }
+
+      .time {
+        margin-top: 10px;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+      }
+
+      .venue {
+        margin-top: 28px;
+      }
+
+      .venue h2 {
+        color: #8b5e3c;
+        margin-bottom: 10px;
+      }
+
+      .countdown {
+        margin-top: 24px;
+        display: flex;
+        justify-content: center;
+        gap: clamp(10px, 3vw, 20px);
+        flex-wrap: wrap;
+      }
+
+      .count-box {
+        background: #faf4ef;
+        padding: clamp(10px, 2.5vw, 15px) clamp(12px, 3vw, 20px);
+        border-radius: 12px;
+        min-width: clamp(70px, 18vw, 88px);
+        flex: 1 1 75px;
+        max-width: 110px;
+        overflow: hidden;
+      }
+
+      .count-box span {
+        display: block;
+        line-height: 1.2;
+        word-break: break-word;
+      }
+
+      .count-number {
+        font-size: clamp(1rem, 4vw, 1.4rem);
+        font-weight: 600;
+        color: #8b5e3c;
+        line-height: 1.05;
+      }
+
+      .count-box span:not(.count-number) {
+        font-size: clamp(0.5rem, 1.3vw, 0.64rem);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .count-box {
+        animation: pop 0.6s ease-out both;
+      }
+
+      @keyframes floatUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        from {
+          transform: scale(1.04);
+        }
+        to {
+          transform: scale(1.08);
+        }
+      }
+
+      @keyframes pop {
+        from {
+          opacity: 0;
+          transform: translateY(10px) scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .map-section {
+        margin-top: 36px;
+      }
+
+      iframe {
+        width: 100%;
+        height: clamp(220px, 45vw, 350px);
+        border: none;
+        border-radius: 16px;
+      }
+
+      .btn {
+        display: block;
+        margin-top: 16px;
+        background: #8b5e3c;
+        color: white;
+        text-decoration: none;
+        padding: 14px 24px;
+        border-radius: 30px;
+        transition: 0.3s;
+        font-size: clamp(0.9rem, 2.5vw, 1rem);
+      }
+
+      .btn:hover {
+        background: #6d472d;
+      }
+
+      .transport-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        margin-top: 28px;
+        text-align: left;
+      }
+
+      .transport-card {
+        background: #faf4ef;
+        border-radius: 14px;
+        padding: 18px 20px;
+        border-left: 4px solid #c9a227;
+      }
+
+      .transport-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 300px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .transport-card .t-icon {
+        font-size: 1.6rem;
+        margin-bottom: 8px;
+        display: block;
+      }
+
+      .transport-card h3 {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #8b5e3c;
+        margin-bottom: 6px;
+      }
+
+      .transport-card p {
+        font-size: 0.85rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .accordion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        padding: 16px 0;
+        border-bottom: 2px solid #e8d4b8;
+        margin-bottom: 20px;
+      }
+
+      .accordion-header h2 {
+        color: #8b5e3c;
+        margin: 0;
+        flex: 1;
+      }
+
+      .accordion-toggle {
+        font-size: 1.5rem;
+        transition: transform 0.3s ease;
+        color: #8b5e3c;
+      }
+
+      .accordion-toggle.open {
+        transform: rotate(180deg);
+      }
+
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.4s ease;
+        opacity: 0;
+      }
+
+      .accordion-content.open {
+        max-height: 1200px;
+        opacity: 1;
+      }
+
+      .landmark-note {
+        margin-top: 20px;
+        font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+        color: #7a5c2e;
+        background: #fff8f0;
+        border: 1.5px dashed #c9a227;
+        border-radius: 14px;
+        padding: 18px 20px;
+        line-height: 1.6;
+        text-align: left;
+      }
+
+      .no-gifts {
+        margin-top: 35px;
+        background: #fff8f0;
+        border: 1.5px dashed #c9a227;
+        border-radius: 14px;
+        padding: 18px 20px;
+        color: #7a5c2e;
+        font-size: clamp(0.88rem, 2.5vw, 1rem);
+        line-height: 1.6;
+        text-align: left;
+      }
+
+      .no-gifts strong {
+        display: block;
+        font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+        margin-bottom: 4px;
+        color: #8b5e3c;
+      }
+
+      .footer {
+        margin-top: 30px;
+        color: #666;
+        font-size: clamp(0.85rem, 2.5vw, 1rem);
+      }
+
+      @media (max-width: 480px) {
+        .transport-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .transport-card:last-child {
+          grid-column: auto;
+          max-width: 100%;
+        }
+
+        .count-box {
+          flex: 1 1 55px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero">
+      <div class="card">
+        <div class="couple-photo scroll-reveal delay-1">
+          <img src="src/img/img.png" alt="Vipin & Neenu" />
+        </div>
+
+        <div class="save-date scroll-reveal delay-2">Save The Date</div>
+
+        <h1 class="scroll-reveal delay-3">Vipin Vijayan</h1>
+        <div class="and scroll-reveal delay-3">&</div>
+        <h1 class="scroll-reveal delay-3">Neenu Sadanandan</h1>
+
+        <p class="subtitle scroll-reveal delay-4">
+          Request the pleasure of your company at their Reception
+        </p>
+
+        <div class="date scroll-reveal delay-4">6 July 2026</div>
+
+        <div class="time scroll-reveal delay-4">5:00 PM – 9:00 PM</div>
+
+        <div class="venue scroll-reveal delay-5">
+          <h2>Venue</h2>
+          <p>
+            Alba Arcade Auditorium<br />
+            Parambil Bazar, Calicut
+          </p>
+        </div>
+
+        <div class="countdown scroll-reveal delay-5">
+          <div class="count-box">
+            <span class="count-number" id="days">0</span>
+            <span>Days</span>
+          </div>
+
+          <div class="count-box">
+            <span class="count-number" id="hours">0</span>
+            <span>Hours</span>
+          </div>
+
+          <div class="count-box">
+            <span class="count-number" id="minutes">0</span>
+            <span>Minutes</span>
+          </div>
+
+          <div class="count-box">
+            <span class="count-number" id="seconds">0</span>
+            <span>Seconds</span>
+          </div>
+        </div>
+
+        <div class="no-gifts scroll-reveal delay-6">
+          <strong>🎁 No Gifts, Please</strong>
+          Your presence is the greatest gift of all. We kindly request that you
+          do not bring any gifts. Just come, celebrate with us, and make this
+          evening special with your love and blessings.
+        </div>
+
+        <div class="footer scroll-reveal delay-6">
+          We look forward to celebrating with you ❤️
+        </div>
+
+        <div
+          class="landmark-note scroll-reveal delay-6"
+          style="margin-top: 40px"
+        >
+          📍 <strong>Landmark:</strong> Alba Arcade Auditorium, Parambil Bazar,
+          Calicut — near the Parambil Bazar junction. Look for the Alba Arcade
+          building.
+        </div>
+
+        <div class="map-section scroll-reveal delay-5" style="margin-top: 40px">
+          <div class="accordion-header" id="accordionToggle">
+            <h2>How to Reach</h2>
+            <span class="accordion-toggle" id="toggleIcon">▼</span>
+          </div>
+
+          <div class="accordion-content" id="accordionContent">
+            <iframe
+              src="https://maps.google.com/maps?q=Alba%20Arcade%20Auditorium%20Parambil%20Bazar%20Calicut&t=&z=15&ie=UTF8&iwloc=&output=embed"
+            >
+            </iframe>
+
+            <a
+              class="btn"
+              href="https://www.google.com/maps/search/?api=1&query=Alba+Arcade+Auditorium+Parambil+Bazar+Calicut"
+              target="_blank"
+            >
+              Open in Google Maps
+            </a>
+
+            <div class="transport-grid scroll-reveal delay-6">
+              <div class="transport-card">
+                <span class="t-icon">🚗</span>
+                <h3>By Car</h3>
+                <p>
+                  Head to Parambil Bazar, Calicut. Alba Arcade Auditorium is
+                  right in the heart of the bazar area.
+                  <strong>Parking is available at the venue.</strong>
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🚆</span>
+                <h3>From Railway Station</h3>
+                <p>
+                  Kozhikode Railway Station is approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are available right outside
+                  the station. Ask for
+                  <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board any bus headed towards
+                  Parambil Bazar from the station road and alight at Parambil
+                  Bazar stop.
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🚌</span>
+                <h3>From KSRTC Bus Stand</h3>
+                <p>
+                  KSRTC Stand is on Mavoor Road, Kozhikode - approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are available outside the
+                  stand. Ask for <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board a private bus from
+                  Mavoor Road towards Parambil Bazar and alight at Parambil
+                  Bazar stop.
+                </p>
+              </div>
+              <div class="transport-card">
+                <span class="t-icon">🏢</span>
+                <h3>From Private Bus Stand</h3>
+                <p>
+                  From Palayam or Mofussil Bus Stand, Kozhikode - approximately
+                  <strong>11 km</strong> from the venue.
+                </p>
+                <p style="margin-top: 6px">
+                  🛺 <strong>Auto:</strong> Autos are readily available. Ask for
+                  <em>Alba Arcade, Parambil Bazar</em>.<br />
+                  🚌 <strong>Private Bus:</strong> Board any bus passing through
+                  Parambil Bazar and alight at Parambil Bazar stop.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const eventDate = new Date("July 6, 2026 17:00:00").getTime();
+
+      const timer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+
+        if (distance < 0) {
+          clearInterval(timer);
+          return;
+        }
+
+        document.getElementById("days").innerText = Math.floor(
+          distance / (1000 * 60 * 60 * 24),
+        );
+
+        document.getElementById("hours").innerText = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+
+        document.getElementById("minutes").innerText = Math.floor(
+          (distance % (1000 * 60 * 60)) / (1000 * 60),
+        );
+
+        document.getElementById("seconds").innerText = Math.floor(
+          (distance % (1000 * 60)) / 1000,
+        );
+      }, 1000);
+
+      const revealElements = document.querySelectorAll(".scroll-reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      revealElements.forEach((element) => revealObserver.observe(element));
+
+      const accordionToggle = document.getElementById("accordionToggle");
+      const accordionContent = document.getElementById("accordionContent");
+      const toggleIcon = document.getElementById("toggleIcon");
+
+      accordionToggle.addEventListener("click", () => {
+        accordionContent.classList.toggle("open");
+        toggleIcon.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
