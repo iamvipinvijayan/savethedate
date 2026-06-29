@@ -27,6 +27,8 @@
         font-family: "Poppins", sans-serif;
         background: linear-gradient(135deg, #fff7f0, #fef3e8);
         color: #333;
+        /* reserve extra space at the bottom so last card content is reachable on mobile */
+        padding-bottom: 96px;
       }
 
       .hero {
@@ -46,6 +48,7 @@
         text-align: center;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         animation: floatUp 0.9s ease-out both;
+        margin-bottom: 20px;
       }
 
       .scroll-reveal {
@@ -259,13 +262,6 @@
         border-radius: 14px;
         padding: 18px 20px;
         border-left: 4px solid #c9a227;
-      }
-
-      .transport-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 300px;
-        margin: 0 auto;
-        width: 100%;
       }
 
       .transport-card .t-icon {
@@ -500,31 +496,18 @@
               </div>
               <div class="transport-card">
                 <span class="t-icon">🚌</span>
-                <h3>From KSRTC Bus Stand</h3>
+                <h3>From Bus Stands</h3>
                 <p>
                   KSRTC Stand is on Mavoor Road, Kozhikode - approximately
                   <strong>11 km</strong> from the venue.
                 </p>
-                <p style="margin-top: 6px">
-                  🛺 <strong>Auto:</strong> Autos are available outside the
-                  stand. Ask for <em>Alba Arcade, Parambil Bazar</em>.<br />
-                  🚌 <strong>Private Bus:</strong> Board a private bus from
-                  Mavoor Road towards Parambil Bazar and alight at Parambil
-                  Bazar stop.
-                </p>
-              </div>
-              <div class="transport-card">
-                <span class="t-icon">🏢</span>
-                <h3>From Private Bus Stand</h3>
                 <p>
                   From Palayam or Mofussil Bus Stand, Kozhikode - approximately
                   <strong>11 km</strong> from the venue.
                 </p>
                 <p style="margin-top: 6px">
-                  🛺 <strong>Auto:</strong> Autos are readily available. Ask for
-                  <em>Alba Arcade, Parambil Bazar</em>.<br />
-                  🚌 <strong>Private Bus:</strong> Board any bus passing through
-                  Parambil Bazar and alight at Parambil Bazar stop.
+                  🛺 <strong>Auto:</strong> Autos are available outside both
+                  stands. Ask for <em>Alba Arcade, Parambil Bazar</em>.
                 </p>
               </div>
             </div>
